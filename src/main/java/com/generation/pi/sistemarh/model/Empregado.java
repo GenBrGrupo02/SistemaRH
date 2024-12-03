@@ -30,12 +30,11 @@ public class Empregado {
 	@Size(min = 5, max = 100, message = "O atributo cargo deve conter no mínimo 05 e no máximo 100 caracteres")
 	private String cargo;
 	
-	@NotBlank(message = "O atributo salario é obrigatório!")
 	@Column(precision = 10, scale = 2)
 	private BigDecimal salario;
 
 	@ManyToOne
-	@JsonIgnoreProperties("empresa")
+	@JsonIgnoreProperties("empregado")
 	private Empresa empresa;
 
 	public Long getId() {

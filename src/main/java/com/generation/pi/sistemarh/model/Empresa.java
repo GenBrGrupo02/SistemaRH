@@ -24,7 +24,7 @@ public class Empresa {
 	private Long id;
 
 	@NotBlank(message = "O atributo departamento é Obrigatorio ")
-	@Size(min = 5, max = 20, message = "O atributo departamento deve conter no mínimo 05 e no máximo 20 caracteres")
+	@Size(min = 2, max = 40, message = "O atributo departamento deve conter no mínimo 02 e no máximo 40 caracteres")
 	private String departamento;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "empresa", cascade = CascadeType.REMOVE)
