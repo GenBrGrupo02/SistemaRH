@@ -34,7 +34,7 @@ public class EmpresaController {
 	}
 
 	@GetMapping("/departamento/{departamento}")
-	public ResponseEntity<List<Empresa>> getByTitle(@PathVariable String departamento) {
+	public ResponseEntity<List<Empresa>> getByDepartamento(@PathVariable String departamento) {
 		return ResponseEntity.ok(empresaRepository.findAllByDepartamentoContainingIgnoreCase(departamento));
 	}
 
