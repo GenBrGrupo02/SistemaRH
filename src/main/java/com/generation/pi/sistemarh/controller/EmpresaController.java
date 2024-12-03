@@ -1,6 +1,7 @@
 package com.generation.pi.sistemarh.controller;
 
-import com.generation.pi.sistemarh.model.EmpresaModel;
+import com.generation.pi.sistemarh.model.Empresa;
+import com.generation.pi.sistemarh.repository.EmpregadoRepository;
 import com.generation.pi.sistemarh.repository.EmpresaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,6 @@ public class EmpresaController {
 
     @Autowired
     private EmpregadoRepository empregadoRepository;
-
 
    
 }

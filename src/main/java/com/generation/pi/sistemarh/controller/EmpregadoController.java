@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.pi.sistemarh.model.Empregado;
+import com.generation.pi.sistemarh.repository.EmpregadoRepository;
+import com.generation.pi.sistemarh.repository.EmpresaRepository;
 
 
 @RestController
