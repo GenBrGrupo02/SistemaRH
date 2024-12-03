@@ -23,9 +23,9 @@ public class Empresa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotBlank(message = "O atributo nome é Obrigatorio ")
-	@Size(min = 5, max = 20, message = "O atributo nome deve conter no mínimo 05 e no máximo 20 caracteres")
-	private String nome;
+	@NotBlank(message = "O atributo departamento é Obrigatorio ")
+	@Size(min = 5, max = 20, message = "O atributo departamento deve conter no mínimo 05 e no máximo 20 caracteres")
+	private String departamento;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "empresa", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("empresa")
@@ -47,11 +47,11 @@ public class Empresa {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getdepartamento() {
+		return departamento;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setdepartamento(String departamento) {
+		this.departamento = departamento;
 	}
 }

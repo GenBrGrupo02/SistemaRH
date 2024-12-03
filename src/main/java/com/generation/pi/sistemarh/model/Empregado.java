@@ -29,7 +29,8 @@ public class Empregado {
 	@NotBlank(message = "O atributo cargo é obrigatório!")
 	@Size(min = 5, max = 100, message = "O atributo cargo deve conter no mínimo 05 e no máximo 100 caracteres")
 	private String cargo;
-
+	
+	@NotBlank(message = "O atributo salario é obrigatório!")
 	@Column(precision = 10, scale = 2)
 	private BigDecimal salario;
 

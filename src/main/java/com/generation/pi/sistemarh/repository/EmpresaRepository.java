@@ -8,6 +8,5 @@ import org.springframework.data.repository.query.Param;
 import com.generation.pi.sistemarh.model.Empresa;
 	
 public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
-	public List<Empresa> findAllByNomeContainingIgnoreCase(@Param("nome") String nome);
-
+	public List<Empresa> findAllByDepartamentoContainingIgnoreCase(@Param("departamento") String departamento);
 }

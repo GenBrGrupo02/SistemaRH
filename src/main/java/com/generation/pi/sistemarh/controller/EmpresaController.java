@@ -9,8 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/empresas")
@@ -31,9 +33,9 @@ public class EmpresaController {
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
-	@GetMapping("/nome/{nome}")
-	public ResponseEntity<List<Empresa>> getByTitle(@PathVariable String nome) {
-		return ResponseEntity.ok(empresaRepository.findAllByNomeContainingIgnoreCase(nome));
+	@GetMapping("/departamento/{departamento}")
+	public ResponseEntity<List<Empresa>> getByTitle(@PathVariable String departamento) {
+		return ResponseEntity.ok(empresaRepository.findAllByDepartamentoContainingIgnoreCase(departamento));
 	}
 
 	@PostMapping
@@ -46,6 +48,17 @@ public class EmpresaController {
 		return empresaRepository.findById(empresa.getId())
 				.map(resposta -> ResponseEntity.status(HttpStatus.CREATED).body(empresaRepository.save(empresa)))
 				.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+	}
+	
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@DeleteMapping("/{id}")
+	public void delete(@PathVariable Long id) {
+		Optional<Empresa> tema = empresaRepository.findById(id);
+		
+		if(tema.isEmpty())
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		
+		empresaRepository.deleteById(id);
 	}
 
 }
