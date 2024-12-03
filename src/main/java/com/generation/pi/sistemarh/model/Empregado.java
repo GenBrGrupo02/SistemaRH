@@ -1,7 +1,10 @@
 package com.generation.pi.sistemarh.model;
 
+import java.math.BigDecimal;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,26 +14,25 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-
 @Entity
 @Table(name = "tb_empregado")
 public class Empregado {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank(message = "O atributo nome é obrigatório!")
 	@Size(min = 5, max = 100, message = "O atributo nome deve conter no mínimo 05 e no máximo 100 caracteres.")
 	private String nome;
-	
+
 	@NotBlank(message = "O atributo cargo é obrigatório!")
 	@Size(min = 5, max = 100, message = "O atributo cargo deve conter no mínimo 05 e no máximo 100 caracteres")
 	private String cargo;
-	
-	@NotBlank(message = "O atributo salário é obrigatório!")
-	private float salario;
-	
+
+	@Column(precision = 10, scale = 2)
+	private BigDecimal salario;
+
 	@ManyToOne
 	@JsonIgnoreProperties("empresa")
 	private Empresa empresa;
@@ -59,11 +61,11 @@ public class Empregado {
 		this.cargo = cargo;
 	}
 
-	public float getSalario() {
+	public BigDecimal getSalario() {
 		return salario;
 	}
 
-	public void setSalario(float salario) {
+	public void setSalario(BigDecimal salario) {
 		this.salario = salario;
 	}
 

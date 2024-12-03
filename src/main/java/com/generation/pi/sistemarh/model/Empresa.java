@@ -4,16 +4,19 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+@Entity
+@Table(name = "tb_empresa")
 public class Empresa {
 
 	@Id
@@ -24,11 +27,10 @@ public class Empresa {
 	@Size(min = 5, max = 20, message = "O atributo nome deve conter no mínimo 05 e no máximo 20 caracteres")
 	private String nome;
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "empregado", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("empregado")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "empresa", cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties("empresa")
 	private List<Empregado> empregado;
 
-	 
 	public List<Empregado> getEmpregado() {
 		return empregado;
 	}
