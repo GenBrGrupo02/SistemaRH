@@ -51,17 +51,17 @@ public class EmpregadoController {
 		if (empresaRepository.existsById(empregado.getEmpresa().getId()))
 			return ResponseEntity.status(HttpStatus.CREATED).body(empregadoRepository.save(empregado));
 
-		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Empresa não existe!", null);
+		throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Empregado não existe!", null);
 	}
 
 	@PutMapping
-	public ResponseEntity<Empregado> put(@Valid @RequestBody Empregado postagem) {
-		if (empresaRepository.existsById(postagem.getId())) {
+	public ResponseEntity<Empregado> put(@Valid @RequestBody Empregado empregado) {
+		if (empresaRepository.existsById(empregado.getId())) {
 
-			if (empresaRepository.existsById(postagem.getEmpresa().getId()))
-				return ResponseEntity.status(HttpStatus.OK).body(empregadoRepository.save(postagem));
+			if (empresaRepository.existsById(empregado.getEmpresa().getId()))
+				return ResponseEntity.status(HttpStatus.OK).body(empregadoRepository.save(empregado));
 
-			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Empresa não existe!", null);
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Empregado não existe!", null);
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 	}
