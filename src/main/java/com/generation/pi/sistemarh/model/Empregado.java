@@ -1,4 +1,4 @@
-package com.generation.pi.sistemarh.model.empregado;
+package com.generation.pi.sistemarh.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
